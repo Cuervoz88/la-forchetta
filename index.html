@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>La Forchetta | Restaurante Italiano</title>
+
+    <style>
+
+        /* ESTILOS GENERALES */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f5ef;
+            color: #333;
+        }
+
+        /* ENCABEZADO */
+
+        header {
+            background-color: #252522;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-family: Georgia, serif;
+            color: #d8ad65;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #d8ad65;
+        }
+
+        /* PORTADA */
+
+        .portada {
+            height: 480px;
+
+            background:
+                linear-gradient(rgba(0,0,0,0.55),
+                rgba(0,0,0,0.55)),
+                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .portada h1 {
+            font-size: 55px;
+            font-family: Georgia, serif;
+            margin-bottom: 15px;
+        }
+
+        .portada p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .boton {
+            background-color: #b88b4a;
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .boton:hover {
+            background-color: #956c34;
+        }
+
+        /* TITULOS */
+
+        .titulo {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .titulo h2 {
+            font-family: Georgia, serif;
+            font-size: 35px;
+            color: #5c3024;
+            margin-bottom: 10px;
+        }
+
+        .titulo p {
+            color: #777;
+        }
+
+        /* SOBRE NOSOTROS */
+
+        .nosotros {
+            padding: 70px 8%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .nosotros img {
+            width: 50%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .texto-nosotros {
+            flex: 1;
+        }
+
+        .texto-nosotros h2 {
+            font-family: Georgia, serif;
+            font-size: 35px;
+            color: #5c3024;
+            margin-bottom: 20px;
+        }
+
+        .texto-nosotros p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* MENU */
+
+        .menu {
+            background-color: #eee8de;
+            padding: 70px 8%;
+        }
+
+        .platos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .plato {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .plato:hover {
+            transform: translateY(-5px);
+        }
+
+        .plato img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .plato h3 {
+            color: #5c3024;
+            margin: 15px 10px;
+            font-family: Georgia, serif;
+        }
+
+        .plato p {
+            color: #777;
+            font-size: 14px;
+            padding: 0 12px;
+            line-height: 1.5;
+        }
+
+        .precio {
+            display: block;
+            color: #a87938;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 18px;
+        }
+
+        /* INFORMACION */
+
+        .informacion {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .datos {
+            display: flex;
+            justify-content: center;
+            gap: 70px;
+            flex-wrap: wrap;
+        }
+
+        .dato h3 {
+            color: #5c3024;
+            margin-bottom: 12px;
+        }
+
+        .dato p {
+            color: #777;
+            line-height: 1.8;
+        }
+
+        /* PIE DE PAGINA */
+
+        footer {
+            background-color: #252522;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* ADAPTACION PARA CELULARES */
+
+        @media (max-width: 900px) {
+
+            .platos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                text-align: center;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+
+            .portada h1 {
+                font-size: 38px;
+            }
+
+            .nosotros {
+                flex-direction: column;
+            }
+
+            .nosotros img {
+                width: 100%;
+            }
+
+            .platos {
+                grid-template-columns: 1fr;
+            }
+
+            .datos {
+                gap: 30px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+
+        <div class="logo">
+            LA FORCHETTA
+        </div>
+
+        <nav>
+
+            <a href="#inicio">Inicio</a>
+
+            <a href="#nosotros">Nosotros</a>
+
+            <a href="#menu">Menú</a>
+
+            <a href="#contacto">Contacto</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- PORTADA -->
+
+    <section class="portada" id="inicio">
+
+        <h1>Una experiencia de sabor</h1>
+
+        <p>
+            Descubrí la auténtica cocina italiana
+            en un ambiente único.
+        </p>
+
+        <a href="#menu" class="boton">
+            VER NUESTRO MENÚ
+        </a>
+
+    </section>
+
+
+    <!-- SOBRE NOSOTROS -->
+
+    <section class="nosotros" id="nosotros">
+
+        <img
+            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900"
+            alt="Interior del restaurante">
+
+        <div class="texto-nosotros">
+
+            <h2>Bienvenidos a La Forchetta</h2>
+
+            <p>
+                Somos un restaurante dedicado a ofrecer
+                una experiencia gastronómica especial,
+                combinando recetas tradicionales con
+                ingredientes frescos y de primera calidad.
+            </p>
+
+            <p>
+                Nuestro objetivo es que cada visita sea
+                un momento especial para compartir con
+                familiares y amigos.
+            </p>
+
+            <a href="#contacto" class="boton">
+                CONOCENOS
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENU DE COMIDAS -->
+
+    <section class="menu" id="menu">
+
+        <div class="titulo">
+
+            <h2>Nuestro Menú</h2>
+
+            <p>
+                Descubrí algunos de nuestros platos
+                más destacados.
+            </p>
+
+        </div>
+
+
+        <div class="platos">
+
+            <div class="plato">
+
+                <img
+                    src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600"
+                    alt="Pasta italiana">
+
+                <h3>Pasta Italiana</h3>
+
+                <p>
+                    Pasta casera acompañada
+                    de una deliciosa salsa.
+                </p>
+
+                <span class="precio">$9.500</span>
+
+            </div>
+
+
+            <div class="plato">
+
+                <img
+                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600"
+                    alt="Pizza">
+
+                <h3>Pizza Especial</h3>
+
+                <p>
+                    Masa artesanal, mozzarella
+                    y salsa de tomate.
+                </p>
+
+                <span class="precio">$8.500</span>
+
+            </div>
+
+
+            <div class="plato">
+
+                <img
+                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600"
+                    alt="Hamburguesa">
+
+                <h3>Hamburguesa Gourmet</h3>
+
+                <p>
+                    Carne seleccionada, cheddar
+                    y vegetales frescos.
+                </p>
+
+                <span class="precio">$10.500</span>
+
+            </div>
+
+
+            <div class="plato">
+
+                <img
+                    src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"
+                    alt="Ensalada">
+
+                <h3>Ensalada Especial</h3>
+
+                <p>
+                    Una combinación de verduras
+                    frescas y sabores únicos.
+                </p>
+
+                <span class="precio">$7.500</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACTO -->
+
+    <section class="informacion" id="contacto">
+
+        <div class="titulo">
+
+            <h2>Visitá nuestro restaurante</h2>
+
+            <p>
+                Estamos listos para recibirte.
+            </p>
+
+        </div>
+
+        <div class="datos">
+
+            <div class="dato">
+
+                <h3>📍 Dirección</h3>
+
+                <p>
+                    Avenida Siempre Viva 123
+                    <br>
+                    Buenos Aires, Argentina
+                </p>
+
+            </div>
+
+
+            <div class="dato">
+
+                <h3>🕒 Horarios</h3>
+
+                <p>
+                    Martes a Domingo
+                    <br>
+                    12:00 a 00:00
+                </p>
+
+            </div>
+
+
+            <div class="dato">
+
+                <h3>📞 Contacto</h3>
+
+                <p>
+                    11 1234-5678
+                    <br>
+                    restaurante@gmail.com
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PIE DE PAGINA -->
+
+    <footer>
+
+        <p>
+            LA FORCHETTA - Restaurante Italiano
+        </p>
+
+        <p>
+            © 2026 Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
